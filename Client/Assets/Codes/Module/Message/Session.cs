@@ -66,7 +66,7 @@ namespace ET
 
             this.requestCallbacks.Clear();
             
-            Log.Info($"session create: zone: {this.DomainZone()} id: {this.Id} {timeNow} ");
+            //Log.Info($"session create: zone: {this.DomainZone()} id: {this.Id} {timeNow} ");
         }
 
         public override void Dispose()
@@ -88,7 +88,7 @@ namespace ET
                 responseCallback.Tcs.SetException(new RpcException(this.Error, $"session dispose: {id} {this.RemoteAddress}"));
             }
 
-            Log.Info($"session dispose: {this.RemoteAddress} zone: {zone} id: {id} ErrorCode: {this.Error}, please see ErrorCode.cs! {TimeHelper.ClientNow()}");
+            //Log.Info($"session dispose: {this.RemoteAddress} zone: {zone} id: {id} ErrorCode: {this.Error}, please see ErrorCode.cs! {TimeHelper.ClientNow()}");
 
             this.requestCallbacks.Clear();
         }

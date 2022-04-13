@@ -11,6 +11,6 @@ namespace ET
         public const int Resources = 6;
         public const int ResourcesLoader = 7;
 
-        public const int Max = 100; // 这个必须最大
+        public const int Max = 10; // 这个必须大于上面类型
     }
 }

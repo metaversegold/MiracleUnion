@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using ILRuntime.Mono.Cecil;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Compilation;
 
 namespace ET
 {
+    [InitializeOnLoadAttribute]
+    public static class PlayModeStateChangedHandler{
+	
+        //初始化类时,注册事件处理函数
+        static PlayModeStateChangedHandler(){
+            EditorApplication.playModeStateChanged+=OnPlayerModeStateChanged;
+        }
+
+        private static void OnPlayerModeStateChanged(PlayModeStateChange playModeState){
+            BuildAssemblieEditor.BuildCodeDebug();
+        }
+    }
+    
     public static class BuildAssemblieEditor
     {
         private const string CodeSrc = "Assets/Codes/";

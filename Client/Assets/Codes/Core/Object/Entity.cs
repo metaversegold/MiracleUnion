@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
+using UnityEngine;
 
 namespace ET
 {
@@ -25,9 +26,29 @@ namespace ET
             get;
             protected set;
         }
-
+		
+#if !NOT_UNITY
+        public static GameObject Global { get; } = GameObject.Find("Global");
+        [BsonIgnore]
+        public GameObject ViewGO { get; set; }
+#endif
         protected Entity()
         {
+#if !NOT_UNITY
+            if (!GetType().IsDefined(typeof (HideInHierarchy), true))
+            {
+                ViewGO = new GameObject();
+                ViewGO.name = GetType().Name;
+                ViewGO.layer = LayerNames.GetLayerInt(LayerNames.HIDDEN);
+                ViewGO.transform.SetParent(Global.transform, false);
+                var componentView = ViewGO.AddComponent(typeof(ComponentView)) as ComponentView;
+
+                if (componentView)
+                {
+                    componentView.Component = this;
+                }
+            }
+#endif
         }
 
         [IgnoreDataMember]
@@ -36,19 +57,26 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
-        private bool IsFromPool
+        public bool IsFromPool
         {
-            get => (this.status & EntityStatus.IsFromPool) == EntityStatus.IsFromPool;
+            get => (status & EntityStatus.IsFromPool) == EntityStatus.IsFromPool;
             set
             {
                 if (value)
                 {
-                    this.status |= EntityStatus.IsFromPool;
+                    status |= EntityStatus.IsFromPool;
                 }
                 else
                 {
-                    this.status &= ~EntityStatus.IsFromPool;
+                    status &= ~EntityStatus.IsFromPool;
                 }
+
+                if (InstanceId == 0)
+                {
+                    InstanceId = IdGenerater.Instance.GenerateId();
+                }
+
+                IsRegister = value;
             }
         }
 
@@ -177,7 +205,8 @@ namespace ET
                 this.parent = value;
                 this.IsComponent = false;
                 this.parent.AddToChildren(this);
-                this.Domain = this.parent.domain;
+                
+                AfterSetParent();
             }
         }
 
@@ -218,8 +247,29 @@ namespace ET
                 this.parent = value;
                 this.IsComponent = true;
                 this.parent.AddToComponents(this);
-                this.Domain = this.parent.domain;
+                
+                AfterSetParent();
             }
+        }
+
+        protected void SetParent(Entity value)
+        {
+            Parent = value;
+        }
+
+        protected void AfterSetParent()
+        {
+            if (parent.domain != null)
+            {
+                Domain = parent.domain;
+            }
+            
+#if !NOT_UNITY
+            if (ViewGO != null && parent.ViewGO != null)
+            {
+                ViewGO.transform.SetParent(parent.ViewGO.transform, false);
+            }
+#endif
         }
 
         public T GetParent<T>() where T : Entity
@@ -505,6 +555,15 @@ namespace ET
             {
                 ObjectPool.Instance.Recycle(this);
             }
+            else
+            {
+#if !NOT_UNITY
+                if (ViewGO != null)
+                {
+                    UnityEngine.Object.Destroy(ViewGO);
+                }
+#endif
+            }
             status = EntityStatus.None;
         }
 
@@ -704,6 +763,21 @@ namespace ET
             component.IsCreated = true;
             component.IsNew = true;
             component.Id = 0;
+            
+            return component;
+        }
+        
+        public static Entity CreateWithParent(Entity parent, Type type, bool isFromPool)
+        {
+            Entity component = Create(type, isFromPool);
+            component.Parent = parent;
+            return component;
+        }
+        
+        public static Entity CreateWithDomain(Entity domain, Type type, bool isFromPool)
+        {
+            Entity component = Create(type, isFromPool);
+            component.Domain = domain ?? component;
             return component;
         }
 
