@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 
 namespace ET
@@ -14,27 +15,34 @@ namespace ET
                 Session session = null;
                 try
                 {
-                    session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
+                    session = zoneScene.GetComponent<NetTcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
                     {
-                        r2CLogin = (R2C_Login) await session.Call(new C2R_Login() { Account = account, Password = password });
+                        string strcmd = StringUtil.substitute("{0}:{1}:{2}", (int)(TCPCmdProtocolVer.VerSign), account, password);
+                        PlayerPrefs.SetString("userName",account);
+                        PlayerPrefs.SetString("password",password);
+                        session.SendString(TCPLoginServerCmds.CMD_LOGIN_ON1, strcmd);
                     }
+                    // session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
+                    // {
+                    //     r2CLogin = (R2C_Login) await session.Call(new C2R_Login() { Account = account, Password = password });
+                    // }
                 }
                 finally
                 {
-                    session?.Dispose();
+                    //session?.Dispose();
                 }
 
-                // 创建一个gate Session,并且保存到SessionComponent中
-                Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(r2CLogin.Address));
-                gateSession.AddComponent<PingComponent>();
-                zoneScene.AddComponent<SessionComponent>().Session = gateSession;
-				
-                G2C_LoginGate g2CLoginGate = (G2C_LoginGate)await gateSession.Call(
-                    new C2G_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId});
-
-                Log.Debug("登陆gate成功!");
-
-                await Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene});
+                // // 创建一个gate Session,并且保存到SessionComponent中
+                // Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(r2CLogin.Address));
+                // gateSession.AddComponent<PingComponent>();
+                // zoneScene.AddComponent<SessionComponent>().Session = gateSession;
+				            //
+                // G2C_LoginGate g2CLoginGate = (G2C_LoginGate)await gateSession.Call(
+                //     new C2G_LoginGate() { Key = r2CLogin.Key, GateId = r2CLogin.GateId});
+                //
+                // Log.Debug("登陆gate成功!");
+                //
+                // await Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene});
             }
             catch (Exception e)
             {

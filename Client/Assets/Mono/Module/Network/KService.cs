@@ -21,6 +21,7 @@ namespace ET
     {
         Outer,
         Inner,
+        CMD,
     }
 
     public sealed class KService: AService

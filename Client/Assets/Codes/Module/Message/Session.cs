@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 
 namespace ET
 {
@@ -17,6 +18,31 @@ namespace ET
 
     public sealed class Session: Entity, IAwake<AService>
     {
+
+        /// <summary>
+        /// 保存接收到的数据包
+        /// </summary>
+        private byte[] PacketBytes = null;
+
+        /// <summary>
+        /// 接收到的数据包的命令ID
+        /// </summary>
+        private ushort _PacketCmdID = 0;
+
+        /// <summary>
+        /// 数据包的命令ID属性
+        /// </summary>
+        public ushort PacketCmdID
+        {
+            get { return _PacketCmdID; }
+            set { _PacketCmdID = value; }
+        }
+
+        /// <summary>
+        /// 发送的数据包的命令数据长度
+        /// </summary>
+        private Int32 _PacketDataSize = 0;
+        
         private readonly struct RpcInfo
         {
             public readonly IRequest Request;
@@ -184,6 +210,59 @@ namespace ET
         {
             this.LastSendTime = TimeHelper.ClientNow();
             this.AService.SendStream(this.Id, actorId, memoryStream);
+        }
+
+        public void SendString(TCPLoginServerCmds cmd, string strcmd)
+        {
+            _PacketCmdID = (ushort) cmd;
+            var bytesCmd = new UTF8Encoding().GetBytes(strcmd);
+            FinalWriteData(bytesCmd, 0, bytesCmd.Length);
+            DataHelper.SortBytes(PacketBytes, 0, PacketBytes.Length);
+            using (MemoryStream stream = new MemoryStream(PacketBytes.Length))
+            {
+                stream.Write(PacketBytes, 0, PacketBytes.Length);
+                Log.Debug("xx客户端 内容(" + _PacketDataSize + "):" + strcmd);
+                Log.Debug("xx客户端 bytes:" + BitConverter.ToString(PacketBytes));
+                this.Send(0, stream);
+            }
+        }
+        
+        public bool FinalWriteData(byte[] buffer, int offset, int count)
+        {
+          if (PacketBytes != null || 11 + count >= 131072)
+            return false;
+          PacketBytes = new byte[count + 4 + 2 + 1 + 4];
+          
+          DataHelper.CopyBytes(PacketBytes, 11, buffer, offset, count);
+          
+          _PacketDataSize = count;
+          Final();
+          return true;
+        }
+
+        private void Final()
+        {
+          int num1 = _PacketDataSize + 2 + 1 + 4;
+          
+          DataHelper.CopyBytes(PacketBytes, 0, BitConverter.GetBytes(num1), 0, 4);
+          ushort PacketCmdID = _PacketCmdID;
+          
+          DataHelper.CopyBytes(PacketBytes, 4, BitConverter.GetBytes(PacketCmdID), 0, 2);
+          
+          int off = 11;
+          DateTime now = DateTime.Now;
+          int clientCheckTicks = (int) ((now.Ticks - TimeHelper.Before1970Ticks) / 10000000L);
+          byte[] bytes = BitConverter.GetBytes(clientCheckTicks);
+          CRC32 crc32 = new CRC32();
+          crc32.update(bytes);
+          crc32.update(PacketBytes, off, _PacketDataSize);
+          
+          uint cc = crc32.getValue() % byte.MaxValue;
+          uint cc2 = (uint)(_PacketCmdID % byte.MaxValue);
+          int cc3 =  (int)(cc ^ cc2);
+          DataHelper.CopyBytes(PacketBytes, 6, BitConverter.GetBytes((short) cc3), 0, 1);
+          DataHelper.CopyBytes(PacketBytes, 7, bytes, 0, 4);
+
         }
     }
 }

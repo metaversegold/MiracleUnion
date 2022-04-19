@@ -5,6 +5,8 @@ namespace ET
 {
     public static class TimeHelper
     {
+        public static long Before1970Ticks = 621356256000000000;
+        
         public const long OneDay = 86400000;
         public const long Hour = 3600000;
         public const long Minute = 60000;

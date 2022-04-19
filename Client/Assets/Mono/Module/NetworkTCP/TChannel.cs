@@ -148,6 +148,14 @@ namespace ET
 					this.sendBuffer.Write(stream.GetBuffer(), (int)stream.Position, (int)(stream.Length - stream.Position));
 					break;
 				}
+				case ServiceType.CMD:
+				{
+					stream.Seek(0, SeekOrigin.Begin);
+					ushort messageSize = (ushort) (stream.Length - stream.Position);
+					this.sendCache.WriteTo(0, messageSize);
+					this.sendBuffer.Write(stream.GetBuffer(), (int)stream.Position, (int)(stream.Length - stream.Position));
+					break;
+				}
 			}
 			
 
@@ -271,10 +279,21 @@ namespace ET
 				}
 				try
 				{
-					bool ret = this.parser.Parse();
-					if (!ret)
+					if (Service.ServiceType == ServiceType.CMD)
 					{
-						break;
+						bool ret = this.parser.ParseCMD();
+						if (!ret)
+						{
+							break;
+						}
+					}
+					else
+					{
+						bool ret = this.parser.Parse();
+						if (!ret)
+						{
+							break;
+						}
 					}
 					
 					this.OnRead(this.parser.MemoryStream);

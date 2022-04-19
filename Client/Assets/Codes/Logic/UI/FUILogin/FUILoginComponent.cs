@@ -19,6 +19,8 @@ namespace ET
 		{
 			fuiLogin = GetParent<FUILogin>();
 			fuiLogin.loginButton.self.onClick.Set(OnClickLogin);
+			fuiLogin.accountInput.text = PlayerPrefs.GetString("userName", "");
+			fuiLogin.passwordInput.text = PlayerPrefs.GetString("password", "");
 		}
 
 		public override void Dispose()
