@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
 
 namespace ET
 {
@@ -62,6 +64,54 @@ namespace ET
 
                 self.RegisterHandler(opcode, iMHandler);
             }
+            
+            self.THandlers.Clear();
+
+            types = Game.EventSystem.GetTypes(typeof (CmdTextHandlerAttribute));
+
+            foreach (Type type in types)
+            {
+                CmdTextHandler iMHandler = Activator.CreateInstance(type) as CmdTextHandler;
+                if (iMHandler == null)
+                {
+                    Log.Error($"message handle {type.Name} 需要继承 CmdTextHandler");
+                    continue;
+                }
+
+                var classInfo = type.GetCustomAttribute<CmdTextHandlerAttribute>();
+                ushort opcode = (ushort)classInfo.Cmd;
+                if (opcode == 0)
+                {
+                    Log.Error($"消息opcode为0: {type.Name}");
+                    continue;
+                }
+
+                self.RegisterTHandler(opcode, iMHandler);
+            }
+            
+            self.BHandlers.Clear();
+
+            types = Game.EventSystem.GetTypes(typeof (CmdByteHandlerAttribute));
+
+            foreach (Type type in types)
+            {
+                CmdByteHandler iMHandler = Activator.CreateInstance(type) as CmdByteHandler;
+                if (iMHandler == null)
+                {
+                    Log.Error($"message handle {type.Name} 需要继承 CmdByteHandler");
+                    continue;
+                }
+
+                var classInfo = type.GetCustomAttribute<CmdByteHandlerAttribute>();
+                ushort opcode = (ushort)classInfo.Cmd;
+                if (opcode == 0)
+                {
+                    Log.Error($"消息opcode为0: {type.Name}");
+                    continue;
+                }
+
+                self.RegisterBHandler(opcode, iMHandler);
+            }
         }
 
         public static void RegisterHandler(this MessageDispatcherComponent self, ushort opcode, IMHandler handler)
@@ -72,6 +122,26 @@ namespace ET
             }
 
             self.Handlers[opcode].Add(handler);
+        }
+
+        public static void RegisterTHandler(this MessageDispatcherComponent self, ushort opcode, CmdTextHandler handler)
+        {
+            if (!self.THandlers.ContainsKey(opcode))
+            {
+                self.THandlers.Add(opcode, new List<CmdTextHandler>());
+            }
+
+            self.THandlers[opcode].Add(handler);
+        }
+
+        public static void RegisterBHandler(this MessageDispatcherComponent self, ushort opcode, CmdByteHandler handler)
+        {
+            if (!self.BHandlers.ContainsKey(opcode))
+            {
+                self.BHandlers.Add(opcode, new List<CmdByteHandler>());
+            }
+
+            self.BHandlers[opcode].Add(handler);
         }
 
         public static void Handle(this MessageDispatcherComponent self, Session session, ushort opcode, object message)
@@ -92,6 +162,58 @@ namespace ET
                 catch (Exception e)
                 {
                     Log.Error(e);
+                }
+            }
+        }
+
+        public static void CmdHandle(this MessageDispatcherComponent self, Session session, ushort opcode, byte[] messageBytes)
+        {
+            int offsetLen = 2;
+            
+            if (self.THandlers.ContainsKey(opcode))
+            {
+                List<CmdTextHandler> actions;
+                if (!self.THandlers.TryGetValue(opcode, out actions))
+                {
+                    Log.Error($"消息没有处理: {opcode} {BitConverter.ToString(messageBytes)}");
+                    return;
+                }
+                string message = new UTF8Encoding().GetString(messageBytes, 2, (int) messageBytes.Length-offsetLen);
+                
+                foreach (CmdTextHandler ev in actions)
+                {
+                    try
+                    {
+                        ev.Handle(session, message);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
+                }
+            }
+            else
+            {
+                List<CmdByteHandler> actions;
+                if (!self.BHandlers.TryGetValue(opcode, out actions))
+                {
+                    Log.Error($"消息没有处理: {opcode} {BitConverter.ToString(messageBytes)}");
+                    return;
+                }
+
+                byte[] message = new byte[messageBytes.Length-offsetLen];
+                DataHelper.CopyBytes(message, 0, messageBytes, offsetLen, messageBytes.Length - offsetLen);
+                
+                foreach (CmdByteHandler ev in actions)
+                {
+                    try
+                    {
+                        ev.Handle(session, message);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
                 }
             }
         }

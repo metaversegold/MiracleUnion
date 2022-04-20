@@ -4,6 +4,43 @@ using UnityEngine;
 
 namespace ET
 {
+    
+    [CmdTextHandler(TCPGameServerCmds.CMD_LOGIN_ON1)]
+    public class CMD_LOGIN_ON1_Handler : CmdTextHandler
+    {
+        protected override async ETTask Run(Session session, string message)
+        {
+            var zoneScene = session.DomainScene();
+            PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
+            player.InitServerInfo(message);
+            
+            session?.Dispose();
+            
+            var sessionGame = zoneScene.GetComponent<NetTcpComponent>().Create(NetworkHelper.ToIPEndPoint(ConstValue.GameAddress));
+            {
+                string strcmd = StringUtil.substitute("{0}:{1}:{2}:{3}:{4}:{5}:{6}",
+                    player.UserID,
+                        player.UserName,
+                        player.UserToken,
+                        -1,//RoleRandToken??
+                        (int)TCPCmdProtocolVer.VerSign,
+                        player.IsAdult,
+                        "Test Device ID"//QMQJJava.GetDeviceID()
+                    );
+                sessionGame.SendString(TCPGameServerCmds.CMD_LOGIN_ON, strcmd);
+            }
+        }
+    }
+    
+    [CmdTextHandler(TCPGameServerCmds.CMD_LOGIN_ON)]
+    public class CMD_LOGIN_ON_Handler : CmdTextHandler
+    {
+        protected override async ETTask Run(Session session, string message)
+        {
+            Log.Debug($"收到消息 : " + message);
+        }
+    }
+    
     public static class LoginHelper
     {
         public static async ETTask Login(Scene zoneScene, string address, string account, string password)
@@ -20,7 +57,7 @@ namespace ET
                         string strcmd = StringUtil.substitute("{0}:{1}:{2}", (int)(TCPCmdProtocolVer.VerSign), account, password);
                         PlayerPrefs.SetString("userName",account);
                         PlayerPrefs.SetString("password",password);
-                        session.SendString(TCPLoginServerCmds.CMD_LOGIN_ON1, strcmd);
+                        session.SendString(TCPGameServerCmds.CMD_LOGIN_ON1, strcmd);
                     }
                     // session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(address));
                     // {

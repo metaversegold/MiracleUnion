@@ -6,13 +6,13 @@
         {
             PlayerComponent playerComponent = zoneScene.GetComponent<PlayerComponent>();
             Scene currentScene = zoneScene.GetComponent<CurrentScenesComponent>().Scene;
-            return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
+            return currentScene.GetComponent<UnitComponent>().Get(playerComponent.UserID);
         }
         
         public static Unit GetMyUnitFromCurrentScene(Scene currentScene)
         {
             PlayerComponent playerComponent = currentScene.Parent.Parent.GetComponent<PlayerComponent>();
-            return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
+            return currentScene.GetComponent<UnitComponent>().Get(playerComponent.UserID);
         }
     }
 }

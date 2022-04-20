@@ -212,7 +212,7 @@ namespace ET
             this.AService.SendStream(this.Id, actorId, memoryStream);
         }
 
-        public void SendString(TCPLoginServerCmds cmd, string strcmd)
+        public void SendString(TCPGameServerCmds cmd, string strcmd)
         {
             _PacketCmdID = (ushort) cmd;
             var bytesCmd = new UTF8Encoding().GetBytes(strcmd);

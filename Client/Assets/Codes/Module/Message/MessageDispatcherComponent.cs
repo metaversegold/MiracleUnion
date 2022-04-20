@@ -14,5 +14,8 @@ namespace ET
         }
 
         public readonly Dictionary<ushort, List<IMHandler>> Handlers = new Dictionary<ushort, List<IMHandler>>();
+        public readonly Dictionary<ushort, List<CmdTextHandler>> THandlers = new Dictionary<ushort, List<CmdTextHandler>>();
+        public readonly Dictionary<ushort, List<CmdByteHandler>> BHandlers = new Dictionary<ushort, List<CmdByteHandler>>();
+
     }
 }

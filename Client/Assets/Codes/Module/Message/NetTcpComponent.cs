@@ -78,7 +78,6 @@ namespace ET
             }
 
             session.LastRecvTime = TimeHelper.ClientNow();
-            //SessionStreamDispatcher.Instance.Dispatch(SessionStreamDispatcherType, session, memoryStream);
             
             int offsetLen = 2;
             byte[] data = memoryStream.GetBuffer();
@@ -97,6 +96,8 @@ namespace ET
             string strData = new UTF8Encoding().GetString(data3, 0, (int) data3.Length);
             Log.Debug($"xx服务端 内容 cmd {((TCPGameServerCmds)_PacketCmdID).ToString()} ({_PacketDataSize}):{strData}");
             Log.Debug("xx服务端 bytes:" + BitConverter.ToString(memoryStream.GetBuffer()));
+            
+            SessionStreamDispatcher.Instance.Dispatch(SessionStreamDispatcherType, session, memoryStream);
         }
 
         public void OnError(long channelId, int error)
