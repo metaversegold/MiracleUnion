@@ -21,6 +21,9 @@ namespace ET
 			fuiLogin.loginButton.self.onClick.Set(OnClickLogin);
 			fuiLogin.accountInput.text = PlayerPrefs.GetString("userName", "");
 			fuiLogin.passwordInput.text = PlayerPrefs.GetString("password", "");
+			
+			PlayerComponent player = this.DomainScene().GetComponent<PlayerComponent>();
+			player.GameServerID = 1;
 		}
 
 		public override void Dispose()

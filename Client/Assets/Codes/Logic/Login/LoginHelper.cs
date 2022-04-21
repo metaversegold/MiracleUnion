@@ -24,9 +24,11 @@ namespace ET
                         player.UserToken,
                         -1,//RoleRandToken??
                         (int)TCPCmdProtocolVer.VerSign,
-                        player.IsAdult,
+                        player.IsAdult?1:0,
                         "Test Device ID"//QMQJJava.GetDeviceID()
                     );
+                string kuafu = StringUtil.substitute(":{0}:{1}:{2}:{3}:{4}:{5}",0, 0, 0, 0, "", 0);//跨服信息
+                strcmd += kuafu;
                 sessionGame.SendString(TCPGameServerCmds.CMD_LOGIN_ON, strcmd);
             }
         }
@@ -34,6 +36,50 @@ namespace ET
     
     [CmdTextHandler(TCPGameServerCmds.CMD_LOGIN_ON)]
     public class CMD_LOGIN_ON_Handler : CmdTextHandler
+    {
+        protected override async ETTask Run(Session session, string message)
+        {
+            Log.Debug($"收到消息 : " + message);
+            var zoneScene = session.DomainScene();
+            zoneScene.RemoveComponent<SessionComponent>();
+            zoneScene.AddComponent<SessionComponent>().Session = session;
+            
+            await Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene});
+            
+            string[] fields = message.Split(':');
+            PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
+            player.RoleRandToken = Convert.ToInt32(fields[0]);
+            
+            session.AddComponent<PingComponent>();
+            
+            string strcmd = StringUtil.substitute("{0}:{1}", player.UserID, player.GameServerID);
+            session.SendString(TCPGameServerCmds.CMD_SECOND_PASSWORD_CHECK_STATE, strcmd);
+            session.SendString(TCPGameServerCmds.CMD_ROLE_LIST, strcmd);
+            // strcmd = StringUtil.substitute("{0}:{1}:{2}", player.UserID, player.RoleID, "Test Device ID");
+            // tcpClient.SendData(TCPOutPacket.MakeTCPOutPacket(tcpClient.OutPacketPool, strcmd, (int)(TCPGameServerCmds.CMD_INIT_GAME)));
+        }
+    }
+    
+    [CmdByteHandler(TCPGameServerCmds.CMD_NTF_EACH_ROLE_ALLOW_CHANGE_NAME)]
+    public class CMD_NTF_EACH_ROLE_ALLOW_CHANGE_NAME_Handler : CmdByteHandler
+    {
+        protected override async ETTask Run(Session session, byte[] message)
+        {
+            Log.Debug($"收到消息 CMD_NTF_EACH_ROLE_ALLOW_CHANGE_NAME : " + BitConverter.ToString(message));
+        }
+    }
+    
+    [CmdTextHandler(TCPGameServerCmds.CMD_SECOND_PASSWORD_CHECK_STATE)]
+    public class CMD_SECOND_PASSWORD_CHECK_STATE_Handler : CmdTextHandler
+    {
+        protected override async ETTask Run(Session session, string message)
+        {
+            Log.Debug($"收到消息 : " + message);
+        }
+    }
+    
+    [CmdTextHandler(TCPGameServerCmds.CMD_ROLE_LIST)]
+    public class CMD_ROLE_LIST_Handler : CmdTextHandler
     {
         protected override async ETTask Run(Session session, string message)
         {

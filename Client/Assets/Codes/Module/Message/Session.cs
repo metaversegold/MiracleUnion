@@ -212,6 +212,23 @@ namespace ET
             this.AService.SendStream(this.Id, actorId, memoryStream);
         }
 
+        public void SendBytes(TCPGameServerCmds cmd, byte[] btcmd)
+        {
+            _PacketCmdID = (ushort) cmd;
+            FinalWriteData(btcmd, 0, btcmd.Length);
+            DataHelper.SortBytes(PacketBytes, 0, PacketBytes.Length);
+            using (MemoryStream stream = new MemoryStream(PacketBytes.Length))
+            {
+                stream.Write(PacketBytes, 0, PacketBytes.Length);
+                Log.Debug("xx客户端 内容(" + _PacketDataSize + "):" + BitConverter.ToString(btcmd));
+                Log.Debug("xx客户端 bytes:" + BitConverter.ToString(PacketBytes));
+                PacketBytes = null;
+                _PacketDataSize = 0;
+                _PacketCmdID = 0;
+                this.Send(0, stream);
+            }
+        }
+
         public void SendString(TCPGameServerCmds cmd, string strcmd)
         {
             _PacketCmdID = (ushort) cmd;
@@ -223,6 +240,9 @@ namespace ET
                 stream.Write(PacketBytes, 0, PacketBytes.Length);
                 Log.Debug("xx客户端 内容(" + _PacketDataSize + "):" + strcmd);
                 Log.Debug("xx客户端 bytes:" + BitConverter.ToString(PacketBytes));
+                PacketBytes = null;
+                _PacketDataSize = 0;
+                _PacketCmdID = 0;
                 this.Send(0, stream);
             }
         }
