@@ -40,6 +40,9 @@ namespace ET
         protected override async ETTask Run(Session session, string message)
         {
             Log.Debug($"收到消息 : " + message);
+            
+            await TimerComponent.Instance.WaitAsync(500);
+            
             var zoneScene = session.DomainScene();
             zoneScene.RemoveComponent<SessionComponent>();
             zoneScene.AddComponent<SessionComponent>().Session = session;
@@ -83,7 +86,11 @@ namespace ET
     {
         protected override async ETTask Run(Session session, string message)
         {
-            Log.Debug($"收到消息 : " + message);
+            var zoneScene = session.DomainScene();
+            PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
+            player.InitRoleList(message);
+            var fui = zoneScene.GetComponent<FUIComponent>().Get(FUILobby.UIResName);
+			fui.GetComponent<FUILobbyComponent>().UpdateRoleList();
         }
     }
     

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="300,100">
+  <displayList>
+    <text id="n0_jscr" name="CharName" xy="74,20" size="148,64" fontSize="48" color="#ffffff" align="center" vAlign="middle" text="角色名"/>
+  </displayList>
+</component>

@@ -11,6 +11,7 @@ namespace ET
         public const string Login_bg_input = "ui://Login/bg_input";
         public const string Login_bg_login = "ui://Login/bg_login";
         public const string Login_Lobby = "ui://Login/Lobby";
+        public const string Login_TextItem = "ui://Login/TextItem";
         public const string Login_Login = "ui://Login/Login";
     }
 }

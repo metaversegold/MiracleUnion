@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 namespace ET
 {
     [ObjectSystem]
-    public class FUILobbyAwakeSystem : AwakeSystem<FUILobby, GObject>
+    public class FUITextItemAwakeSystem : AwakeSystem<FUITextItem, GObject>
     {
-        public override void Awake(FUILobby self, GObject go)
+        public override void Awake(FUITextItem self, GObject go)
         {
             self.Awake(go);
         }
     }
         
-    public sealed class FUILobby : FUI
+    public sealed class FUITextItem : FUI
     {	
         public const string UIPackageName = "Login";
-        public const string UIResName = "Lobby";
+        public const string UIResName = "TextItem";
         
         /// <summary>
         /// {uiResName}的组件类型(GComponent、GButton、GProcessBar等)，它们都是GObject的子类。
         /// </summary>
         public GComponent self;
             
-    public GImage bg;
-    public FUITitleButton enterButton;
-    public GList RoleList;
-    public const string URL = "ui://2w4fpdl4hbe5e";
+    public GTextField CharName;
+    public const string URL = "ui://2w4fpdl4jscrg";
 
     private static GObject CreateGObject()
     {
@@ -39,34 +37,34 @@ namespace ET
         UIPackage.CreateObjectAsync(UIPackageName, UIResName, result);
     }
         
-    public static FUILobby CreateInstance(Entity domain)
+    public static FUITextItem CreateInstance(Entity domain)
     {			
-        return EntityFactory.Create<FUILobby, GObject>(domain, CreateGObject());
+        return EntityFactory.Create<FUITextItem, GObject>(domain, CreateGObject());
     }
         
-    public static Task<FUILobby> CreateInstanceAsync(Entity domain)
+    public static Task<FUITextItem> CreateInstanceAsync(Entity domain)
     {
-        TaskCompletionSource<FUILobby> tcs = new TaskCompletionSource<FUILobby>();
+        TaskCompletionSource<FUITextItem> tcs = new TaskCompletionSource<FUITextItem>();
 
         CreateGObjectAsync((go) =>
         {
-            tcs.SetResult(EntityFactory.Create<FUILobby, GObject>(domain, go));
+            tcs.SetResult(EntityFactory.Create<FUITextItem, GObject>(domain, go));
         });
 
         return tcs.Task;
     }
         
-    public static FUILobby Create(Entity domain, GObject go)
+    public static FUITextItem Create(Entity domain, GObject go)
     {
-        return EntityFactory.Create<FUILobby, GObject>(domain, go);
+        return EntityFactory.Create<FUITextItem, GObject>(domain, go);
     }
         
     /// <summary>
     /// 通过此方法获取的FUI，在Dispose时不会释放GObject，需要自行管理（一般在配合FGUI的Pool机制时使用）。
     /// </summary>
-    public static FUILobby GetFormPool(Entity domain, GObject go)
+    public static FUITextItem GetFormPool(Entity domain, GObject go)
     {
-        var fui = go.Get<FUILobby>();
+        var fui = go.Get<FUITextItem>();
 
         if(fui == null)
         {
@@ -101,9 +99,7 @@ namespace ET
         if(com != null)
         {	
             
-    		bg = (GImage)com.GetChild("bg");
-    		enterButton = FUITitleButton.Create(domain, com.GetChild("enterButton"));
-    		RoleList = (GList)com.GetChild("RoleList");
+    		CharName = (GTextField)com.GetChild("CharName");
     	}
 }
        public override void Dispose()
@@ -118,10 +114,7 @@ namespace ET
             self.Remove();
             self = null;
             
-			bg = null;
-			enterButton.Dispose();
-			enterButton = null;
-			RoleList = null;
+			CharName = null;
 		}
 }
 }

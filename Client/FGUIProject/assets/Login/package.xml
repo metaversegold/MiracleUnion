@@ -9,6 +9,7 @@
     <image id="hbe5d" name="bg_content.png" path="/Resource/" scale="9grid" scale9grid="5,5,83,11"/>
     <component id="hbe5e" name="Lobby.xml" path="/Component/" exported="true"/>
     <image id="hbe5f" name="bg_input.png" path="/Resource/" scale="9grid" scale9grid="5,5,83,11"/>
+    <component id="jscrg" name="TextItem.xml" path="/Component/" exported="true"/>
   </resources>
   <publish name="Login" path="..\..\Client\Assets\Bundles\FUI" packageCount="2" genCode="true" extractAlpha="true"/>
 </packageDescription>

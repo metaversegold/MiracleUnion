@@ -5,7 +5,7 @@
   "auxline1": true,
   "canvasColor": 10066329,
   "auxline2": true,
-  "doc.activeDoc": "ui://2w4fpdl4ofor0",
+  "doc.activeDoc": "ui://2w4fpdl4jscrg",
   "libview.twoColumn": false,
   "libview.expandedNodes": [
     "1n4czled",
@@ -20,7 +20,9 @@
   "doc.openedDocs": [
     "ui://1n4czledsfv94",
     "ui://2w4fpdl4ofor0",
-    "ui://2w4fpdl4hbe5e"
+    "ui://2w4fpdl4hbe5e",
+    "ui://2w4fpdl4hbe5a",
+    "ui://2w4fpdl4jscrg"
   ],
   "snapToGrid": true,
   "gridColor": 80,
