@@ -25,7 +25,7 @@ namespace ET
                         -1,//RoleRandToken??
                         (int)TCPCmdProtocolVer.VerSign,
                         player.IsAdult?1:0,
-                        "Test Device ID"//QMQJJava.GetDeviceID()
+                        ConstValue.GetDeviceID()
                     );
                 string kuafu = StringUtil.substitute(":{0}:{1}:{2}:{3}:{4}:{5}",0, 0, 0, 0, "", 0);//跨服信息
                 strcmd += kuafu;
@@ -58,8 +58,10 @@ namespace ET
             string strcmd = StringUtil.substitute("{0}:{1}", player.UserID, player.GameServerID);
             session.SendString(TCPGameServerCmds.CMD_SECOND_PASSWORD_CHECK_STATE, strcmd);
             session.SendString(TCPGameServerCmds.CMD_ROLE_LIST, strcmd);
-            // strcmd = StringUtil.substitute("{0}:{1}:{2}", player.UserID, player.RoleID, "Test Device ID");
-            // tcpClient.SendData(TCPOutPacket.MakeTCPOutPacket(tcpClient.OutPacketPool, strcmd, (int)(TCPGameServerCmds.CMD_INIT_GAME)));
+            
+            
+            strcmd = StringUtil.substitute("{0}:{1}:{2}:{3}", player.RoleID, ConstValue.CodeRevision, ConstValue.MainExeVer, ConstValue.ResSwfVer);
+            session.SendString(TCPGameServerCmds.CMD_SPR_PUSH_VERSION, strcmd);
         }
     }
     
@@ -72,12 +74,21 @@ namespace ET
         }
     }
     
+    [CmdTextHandler(TCPGameServerCmds.CMD_SPR_PUSH_VERSION)]
+    public class CMD_SPR_PUSH_VERSION_Handler : CmdTextHandler
+    {
+        protected override async ETTask Run(Session session, string message)
+        {
+            Log.Debug($"收到消息 CMD_SPR_PUSH_VERSION : " + message);
+        }
+    }
+    
     [CmdTextHandler(TCPGameServerCmds.CMD_SECOND_PASSWORD_CHECK_STATE)]
     public class CMD_SECOND_PASSWORD_CHECK_STATE_Handler : CmdTextHandler
     {
         protected override async ETTask Run(Session session, string message)
         {
-            Log.Debug($"收到消息 : " + message);
+            Log.Debug($"收到消息 CMD_SECOND_PASSWORD_CHECK_STATE : " + message);
         }
     }
     

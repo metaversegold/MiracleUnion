@@ -48,6 +48,9 @@ namespace ET
 		{
 			if (selectedID > 0)
 			{
+				var zoneScene = this.ZoneScene();
+				PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
+				player.RoleID = selectedID;
 				EnterMapHelper.EnterMapAsync(this.ZoneScene()).Coroutine();
 				this.ZoneScene().GetComponent<FUIComponent>().Remove(FUILobby.UIResName);
 			}

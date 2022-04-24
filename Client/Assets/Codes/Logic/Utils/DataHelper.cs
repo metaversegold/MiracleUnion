@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using ProtoBuf;
+using ComponentAce.Compression.Libs.zlib;
 
 namespace ET
 {
@@ -435,6 +438,94 @@ namespace ET
         public static DateTime GetRealDate(int day)
         {
             return StartDate.AddDays(day);
+        }
+        
+        /// <summary>
+        /// zlib 压缩算法
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static byte[] Compress(byte[] bytes)
+        {
+            using (var ms = new MemoryStream())
+            {
+                using (ZOutputStream outZStream = new ZOutputStream(ms, zlibConst.Z_BEST_SPEED))
+                {
+                    outZStream.Write(bytes, 0, bytes.Length);
+                    outZStream.Flush();
+                }
+        
+                return ms.ToArray();
+            }
+        }
+        
+        /// <summary>
+        /// zlib 解压缩算法
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public static byte[] Uncompress(byte[] bytes)
+        {
+            //小于2个字节肯定是非压缩的
+            if (bytes.Length < 2)
+            {
+                return bytes;
+            }
+        
+            //判断是否是压缩数据，是才执行解开压缩操作
+            if (0x78 != bytes[0])
+            {
+                return bytes;
+            }
+        
+            if (0x9C != bytes[1] && 0xDA != bytes[1])
+            {
+                return bytes;
+            }
+        
+            using (var ms = new MemoryStream())
+            {
+                using (ZOutputStream outZStream = new ZOutputStream(ms))
+                {
+                    outZStream.Write(bytes, 0, bytes.Length);
+                    outZStream.Flush();
+                }
+        
+                return ms.ToArray();
+            }
+        }
+        
+        /// <summary>
+        /// 将字节数据转为对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="bytesData"></param>
+        /// <returns></returns>
+        public static T BytesToObject<T>(byte[] bytesData, int offset, int length)
+        {
+            if (bytesData.Length == 0) return default(T);
+
+            try
+            {
+                //zlib解压缩算法
+                byte[] copyData = new byte[length];
+                CopyBytes(copyData, 0, bytesData, offset, length);
+                copyData = Uncompress(copyData);
+
+                MemoryStream ms = new MemoryStream();
+                ms.Write(copyData, 0, copyData.Length);
+                ms.Position = 0;
+                T t = Serializer.Deserialize<T>(ms);
+                ms.Dispose();
+                ms = null;
+                return t;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("将字节数据转为对象发生异常:" + ex);
+            }
+
+            return default(T);
         }
     }
 }

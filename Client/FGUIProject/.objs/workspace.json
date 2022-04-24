@@ -1,11 +1,12 @@
 {
   "libview.firstColumnWidth": 283,
+  "test.device": "Xiaomi 9",
   "libview.iconScale": 0,
   "backgroundColor": 6710886,
   "auxline1": true,
   "canvasColor": 10066329,
   "auxline2": true,
-  "doc.activeDoc": "ui://2w4fpdl4jscrg",
+  "doc.activeDoc": "ui://2w4fpdl4hbe5e",
   "libview.twoColumn": false,
   "libview.expandedNodes": [
     "1n4czled",
@@ -25,6 +26,7 @@
     "ui://2w4fpdl4jscrg"
   ],
   "snapToGrid": true,
+  "test.orientation": "landscape",
   "gridColor": 80,
   "libview.currentGroup": "",
   "gridSize": 30
