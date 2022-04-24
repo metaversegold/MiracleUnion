@@ -14,6 +14,7 @@ namespace ET
                 string strcmd = StringUtil.substitute("{0}:{1}:{2}", zoneScene.GetComponent<PlayerComponent>().UserID, zoneScene.GetComponent<PlayerComponent>().RoleID,ConstValue.GetDeviceID());
                 zoneScene.GetComponent<SessionComponent>().Session.SendString(TCPGameServerCmds.CMD_INIT_GAME, strcmd);
                 
+                await SceneChangeHelper.SceneChangeTo(zoneScene, "Map1", 1);
                 // 等待场景切换完成
                 await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneChangeFinish>();
                 

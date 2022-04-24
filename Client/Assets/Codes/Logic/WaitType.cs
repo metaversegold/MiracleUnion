@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using Server.Data;
+
+namespace ET
 {
     namespace WaitType
     {
@@ -20,6 +22,17 @@
             }
 
             public M2C_CreateMyUnit Message;
+        }
+        
+        public struct Wait_CreatePlayerRoleUnit: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+
+            public RoleData Data;
         }
         
         public struct Wait_SceneChangeFinish: IWaitType

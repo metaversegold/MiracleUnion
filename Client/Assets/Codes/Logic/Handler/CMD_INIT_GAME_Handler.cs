@@ -21,7 +21,8 @@ namespace ET
             //CMD_SPR_DAILYACTIVEDATA 获取每日活跃信息
             //CMD_UPDATEALLTHINGINDEXS
             
-            
+            session.DomainScene().GetComponent<ObjectWait>().Notify(new WaitType.Wait_CreatePlayerRoleUnit() {Data = roleData});
+            await ETTask.CompletedTask;
         }
     }
 }
