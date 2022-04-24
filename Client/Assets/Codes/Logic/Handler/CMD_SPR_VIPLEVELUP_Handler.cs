@@ -6,9 +6,9 @@ namespace ET
     [CmdTextHandler(TCPGameServerCmds.CMD_SPR_VIPLEVELUP)]
     public class CMD_SPR_VIPLEVELUP_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
-            Log.Debug($"收到消息 CMD_SPR_VIPLEVELUP : " + message);
+            Log.Debug($"收到消息 CMD_SPR_VIPLEVELUP : " + fields);
         }
     }
 }

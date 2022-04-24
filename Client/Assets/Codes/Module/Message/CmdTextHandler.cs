@@ -5,7 +5,7 @@ namespace ET
 {
     public abstract class CmdTextHandler
     {
-        protected abstract ETTask Run(Session session, string message);
+        protected abstract ETTask Run(Session session, string[] fields);
 
         public void Handle(Session session, string msg)
         {
@@ -15,7 +15,9 @@ namespace ET
                 return;
             }
 
-            this.Run(session, msg).Coroutine();
+            string[] fields = msg.Split(':');
+            
+            this.Run(session, fields).Coroutine();
         }
     }
 }

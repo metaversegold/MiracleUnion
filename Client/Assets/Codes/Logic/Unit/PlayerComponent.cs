@@ -14,9 +14,8 @@ namespace ET
         public int RoleRandToken;
         public Dictionary<int, string[]> Roles = new Dictionary<int, string[]>();
 
-        public void InitServerInfo(string message)
+        public void InitServerInfo(string[] fields)
         {
-            string[] fields = message.Split(':');
             UserID = Convert.ToInt64(fields[0]);
             UserName = fields[1];
             UserToken = fields[2];
@@ -24,10 +23,9 @@ namespace ET
             IsAdult = Convert.ToInt32(fields[3]) == 1;
         }
 
-        public void InitRoleList(string message)
+        public void InitRoleList(string[] fields)
         {
             Roles.Clear();
-            string[] fields = message.Split(':');
             string[] roles = fields[1].Split('|');
             for (int i = 0; i < roles.Length; i++)
             {

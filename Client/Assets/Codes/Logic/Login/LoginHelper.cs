@@ -8,11 +8,11 @@ namespace ET
     [CmdTextHandler(TCPGameServerCmds.CMD_LOGIN_ON1)]
     public class CMD_LOGIN_ON1_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
             var zoneScene = session.DomainScene();
             PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
-            player.InitServerInfo(message);
+            player.InitServerInfo(fields);
             
             session?.Dispose();
             
@@ -37,9 +37,9 @@ namespace ET
     [CmdTextHandler(TCPGameServerCmds.CMD_LOGIN_ON)]
     public class CMD_LOGIN_ON_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
-            Log.Debug($"收到消息 : " + message);
+            Log.Debug($"收到消息 : " + fields);
             
             await TimerComponent.Instance.WaitAsync(500);
             
@@ -49,7 +49,6 @@ namespace ET
             
             await Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene});
             
-            string[] fields = message.Split(':');
             PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
             player.RoleRandToken = Convert.ToInt32(fields[0]);
             
@@ -77,29 +76,29 @@ namespace ET
     [CmdTextHandler(TCPGameServerCmds.CMD_SPR_PUSH_VERSION)]
     public class CMD_SPR_PUSH_VERSION_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
-            Log.Debug($"收到消息 CMD_SPR_PUSH_VERSION : " + message);
+            Log.Debug($"收到消息 CMD_SPR_PUSH_VERSION : " + fields);
         }
     }
     
     [CmdTextHandler(TCPGameServerCmds.CMD_SECOND_PASSWORD_CHECK_STATE)]
     public class CMD_SECOND_PASSWORD_CHECK_STATE_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
-            Log.Debug($"收到消息 CMD_SECOND_PASSWORD_CHECK_STATE : " + message);
+            Log.Debug($"收到消息 CMD_SECOND_PASSWORD_CHECK_STATE : " + fields);
         }
     }
     
     [CmdTextHandler(TCPGameServerCmds.CMD_ROLE_LIST)]
     public class CMD_ROLE_LIST_Handler : CmdTextHandler
     {
-        protected override async ETTask Run(Session session, string message)
+        protected override async ETTask Run(Session session, string[] fields)
         {
             var zoneScene = session.DomainScene();
             PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
-            player.InitRoleList(message);
+            player.InitRoleList(fields);
             var fui = zoneScene.GetComponent<FUIComponent>().Get(FUILobby.UIResName);
 			fui.GetComponent<FUILobbyComponent>().UpdateRoleList();
         }
