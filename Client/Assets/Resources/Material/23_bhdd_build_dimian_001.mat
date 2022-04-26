@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_Name: 23_bhdd_build_dimian_001
+  m_Shader: {fileID: 4800000, guid: 9f0d4cc8fbcbd0545ad75838f94e49e7, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2001
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Layer1:
+        m_Texture: {fileID: 2800000, guid: adbed527e35a496498ee6a5d6476142d, type: 3}
+        m_Scale: {x: 12, y: 12}
+        m_Offset: {x: 0, y: 0}
+    - _Layer2:
+        m_Texture: {fileID: 2800000, guid: 5db35c740f392f44e88d9d94e71ea34c, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _Layer3:
+        m_Texture: {fileID: 2800000, guid: 86c083fc6c074af448c5c3696de817d5, type: 3}
+        m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 82b3b25699723bb43a59f79132f84d87, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _RimPow: 0.5
+    - _SpecPow: 40
+    - _SpeedU0: 1
+    - _SpeedU1: 1
+    - _SpeedU2: 1
+    - _SpeedU3: 1
+    - _SpeedV0: -1
+    - _SpeedV1: -1
+    - _SpeedV2: -1
+    - _SpeedV3: -1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _LayerColor0: {r: 0.6940298, g: 0.6940298, b: 0.6940298, a: 1}
+    - _LayerColor1: {r: 0.6567164, g: 0.6567164, b: 0.6567164, a: 1}
+    - _LayerColor2: {r: 0.5522388, g: 0.5522388, b: 0.5522388, a: 1}
+    - _LayerColor3: {r: 0.5373135, g: 0.5453331, b: 0.5453331, a: 1}

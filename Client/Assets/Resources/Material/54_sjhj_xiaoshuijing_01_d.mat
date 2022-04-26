@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_Name: 54_sjhj_xiaoshuijing_01_d
+  m_Shader: {fileID: 4800000, guid: e5b0d5e508d731f49bddd4824f1739f9, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Illum:
+        m_Texture: {fileID: 2800000, guid: 190bbfe86ac79034286601a89df98d38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 190bbfe86ac79034286601a89df98d38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Cutoff: 0.5
+    - _EmissionLM: 0
+    - _InvFade: 1
+    - _LightScale: 8
+    - _Shininess: 0.078125
+    - _SpecPow: 40
+    - _SpecSpeedU0: 15
+    - _TimeScale1: 8
+    - _TimeScale2: 8
+    - _interval: 0.5
+    - _remainder: 0
+    m_Colors:
+    - _Color: {r: 0.6397059, g: 0.6020761, b: 0.6371108, a: 1}
+    - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
+    - _ReflectColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5019608}
+    - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor1: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecColor2: {r: 0, g: 0, b: 0, a: 1}
+    - _TintColor: {r: 0.6323529, g: 0.5579585, b: 0.5579585, a: 0.5019608}

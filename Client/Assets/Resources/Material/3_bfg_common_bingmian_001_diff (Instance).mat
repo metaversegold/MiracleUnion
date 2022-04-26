@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_Name: 3_bfg_common_bingmian_001_diff (Instance)
+  m_Shader: {fileID: 10703, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 835aea19d5a621b4788161284284af30, type: 3}
+        m_Scale: {x: 14, y: 14}
+        m_Offset: {x: 0, y: -0.1047779}
+    m_Floats:
+    - _RimPow: 0.5
+    - _RimPow3: 0.5
+    - _dirX0: 1
+    - _dirX1: 1
+    - _dirX2: 1
+    - _dirX3: 1
+    - _dirY0: -1
+    - _dirY1: -1
+    - _dirY2: -1
+    - _dirY3: -1
+    m_Colors:
+    - _Color: {r: 0.588, g: 0.588, b: 0.588, a: 1}
+    - _LightColor: {r: 0.9104478, g: 0, b: 0, a: 1}
+    - _LightColor1: {r: 0, g: 0.1188812, b: 1, a: 1}
+    - _LightColor2: {r: 1, g: 1, b: 1, a: 1}
+    - _LightColor3: {r: 1, g: 1, b: 1, a: 1}
+    - _Specular: {r: 1, g: 1, b: 1, a: 1}

@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &4300000
+Mesh:
+  m_Name: 40_tssd_common_yuanzhu_003
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 111
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 32
+    localAABB:
+      m_Center: {x: 0.00108397, y: 0.004810676, z: 0.003269643}
+      m_Extent: {x: 0.539165, y: 0.1756399, z: 0.6662433}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes:
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 00000100020000000300010000000200040005000400020005000200060002000700060002000800070009000000040003000000090004000a0009000b00050006000b0006000c0006000d000c0006000e000d000b000f0005000b0010000f0010000c000d00030009001100100012000c001100090013000a0013000900110013001400140013000a001500110014001500140016001600170015001700180015001800170019001a00170016001a00190017000a001a00160014000a001b000a001c001a0005000f001d0005001d00040004001e000a0004001f001e00
+  m_Skin: []
+  m_VertexData:
+    m_CurrentChannels: 139
+    m_VertexCount: 32
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 32
+      format: 0
+      dimension: 4
+    m_DataSize: 1536
+    _typelessdata: 7b54e8bea45c143d14ee463de6af41bf8854263fe2d9963d1e2a073faca94c3ec4aad7bd871e22bc62907ebf000080bf7bcce5bedced2ebee18e833e51446cbf7b1c863ef676903ebc96a93e34c2c83de7f3f1bd333d013f30e75abf000080bf00c8c5be66b24c3d00705b3e6de021bf08032e3f3e48be3eeb9bd63e5ae6693efccc73be9e6e923e399d6dbf000080bf3d1204bfc252e5bd33f372bd9fa565bf3ec8e13ec6e0eabccf80153f38fcb53d013fa9bb554b9abdde447fbf000080bf66a6cabd0ac8383ec2f57abd209408bdf4d87e3f4fb5b5bd27a2103f0822f13e974e78be4fe1c0bdc12f77bf000080bf47115e3ebd7b343e66ae873e0b90c53d609b7e3f632a213da529a33e9839223f5a457ebe3d4c7f3de17777bf000080bf5c4f17bdf5be573d5c2b0b3f49ceb8be61b92e3f8ab1223f5cc02f3e9a18d93ed1e696be1a24103f0fa745bf000080bf3d6a84bd5c922bbec22f1e3f15cb26bfb5e1a13ef388303fe682553d0a40b73e0a4f87be99e9413f55d418bf000080bf7bcce5bedced2ebee18e833eef37d5be46b5573e7169623fbc96a93e34c2c83d47df11bf4f92323fcc6fdebe000080bfe102b1bed7b4ad3d0aef5ebecc0019bfbb4e4c3f73dd9cbd7f5e323f6de79e3edc3dd1bdf5a92ebe88e37abf000080bf3d3a5ebeeb1ff43d14869abe0f580bbb48167f3f09c1acbdd8b23a3fb748de3e361ca4becd07a5bd3b9d71bf000080bf852bc03e70451d3e0024b73e88c5913efb61753f660b54bc4ac47d3e621a373fa53daebeb521b53d15a76fbf000080bf99390c3e00aa273da4e41a3f1eacc13bac3a293fcb14403f0711de3d0a0c063f30151cbe12fe3d3fe11427bf000080bf5c4f743e47a9e1bd33652b3f81cb123e58c7fe3e18005b3f70bcdd3be4f3153fecd710bec3a65d3f13baf5be000080bf3d6a84bd5c922bbec22f1e3fb1ebebbd14f2d53db8e27c3fe682553d0a40b73e4a7fcabef14b683fdc7d11be000080bf148ee83e8f145b3d3373013e1e1dc43ef349633ffc8b82becd57bf3e513b543f57ae8bbecbb31ebe831273bf000080bfc24d0a3fb88e003deb99b83e3722003f4ffb523f87b6873ec6e8573e79ee553f5faf84be379ade3e5dc95cbf000080bfeb11cbbe5c9fdfbcae679cbedf9b4dbf954c163f4741cf3d9dc3443f0ea16f3e5bb084bea0f043be525a72bf000080bf852bc03e70451d3e0024b73e5e92fa3dd75de83ee7f4613f4ac47d3e621a373f85ce58be547b613f06dad8be000080bfd713b1be0007a73d47ed90be0b5f1ebf5db0463fc216fa3dcebd3c3fdfb1a73ef3dab6be8fb20ebee3706cbf000080bfb896bfbef6a5a13d29e0abbe266f20bfef9a353f8f1fa53e2ae4443fc8a5a83e73cb06bf24a6a4bdb2a958bf000080bfaebf09bf29dc3fbd99e5f3be2a2639bfae912e3f1da3df3de7486b3f92d7653ee614a2beb64f3fbed5136ebf000080bf33d38dbea32af93d527ccabeabf5b8bc49b07f3f088c333df1234a3f0396d93ea282bfbe7ffb033d1f466dbf000080bf52f0bebec76b0e3e85b310bf3f4bc1bed3cf653faa9d68bea9ee663fabcecd3e78d22bbe977a9dbeccc56fbf000080bf5c17bbbe99254c3da4b829bff16ee1be8a5a253f32a71fbfdeb77b3f1ddfcf3e71d8a63c89ee2fbf09e539bf000080bfaeef81be52f6ac3d70ab21bf413e3b3e040f6b3fbce9b3beb731723fe624f73e3f56d3bd5ccfacbe72866fbf000080bfd7e3febdebef9b3d66a6debe8f819f3ee8f6713fbd94c8bda32a4d3ffffb0c3f7e69aebe399b733ca2a870bf000080bf33d38dbea32af93d527ccabec75879be8c1b683f955db03ef1234a3f0396d93e6b2ddfbee31f5c3e1fbb5fbf000080bf47e17ebd7b36563da410bbbe2dcc283f36f9373f3f2c62bed961403f13eb123fe61268be9d92b8bde64478bf000080bfe1baf83d5ccb563d855b63be46fc9c3e3d0b683f2abc94bedf86243fb358293f26b38dbecc1554befe3770bf000080bf47e17ebd7b36563da410bbbee6fb843e1395663f9949b2bed961403f13eb123fbd5cb0be2c3c80be639f67bf000080bfe1baf83d5ccb563d855b63befb1a103f06b12b3fa551f7bedf86243fb358293f9273bbbe93ada4be2e8b5fbf000080bf
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data:
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data:
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0.00108397, y: 0.004810676, z: 0.003269643}
+    m_Extent: {x: 0.539165, y: 0.1756399, z: 0.6662433}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh:
+  m_BakedTriangleCollisionMesh:
+  m_MeshOptimized: 1

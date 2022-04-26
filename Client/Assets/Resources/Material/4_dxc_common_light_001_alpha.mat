@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_Name: 4_dxc_common_light_001_alpha
+  m_Shader: {fileID: 4800000, guid: 7ba8f48907bf422438c34f7e2e55e370, type: 3}
+  m_ShaderKeywords:
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: bddda9470282b6d4d993837193f7b755, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: {}
+    m_Colors:
+    - _Color: {r: 0.8208956, g: 0.7669175, b: 0.4349521, a: 0.6352941}
+    - _TintColor: {r: 0.4926471, g: 0.4259948, b: 0.3260164, a: 0.5019608}

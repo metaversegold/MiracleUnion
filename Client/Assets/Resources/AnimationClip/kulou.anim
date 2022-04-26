@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_Name: kulou
+  serializedVersion: 6
+  m_Legacy: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: -0.3198649, y: -0.37419, z: -0.8506886, w: 0.184383}
+        inSlope: {x: -0.05295038, y: -0.1196748, z: 0.08846997, w: 0.07210671}
+        outSlope: {x: -0.05295038, y: -0.1196748, z: 0.08846997, w: 0.07210671}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8333332
+        value: {x: -0.3635151, y: -0.4876431, z: -0.7477881, w: 0.2662215}
+        inSlope: {x: -0.03653798, y: -0.1180522, z: 0.1310618, w: 0.1020349}
+        outSlope: {x: -0.03653798, y: -0.1180522, z: 0.1310618, w: 0.1020349}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1.666666
+        value: {x: -0.3749889, y: -0.5305145, z: -0.6957595, w: 0.3063596}
+        inSlope: {x: 0.007115013, y: 0.03233674, z: -0.04295294, w: -0.03284368}
+        outSlope: {x: 0.007115013, y: 0.03233674, z: -0.04295294, w: -0.03284368}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 2.499998
+        value: {x: -0.3492877, y: -0.4460102, z: -0.7905282, w: 0.2326757}
+        inSlope: {x: 0.05471265, y: 0.1475672, z: -0.1400669, w: -0.1108723}
+        outSlope: {x: 0.05471265, y: 0.1475672, z: -0.1400669, w: -0.1108723}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 3
+        value: {x: -0.3198648, y: -0.3741902, z: -0.8506886, w: 0.184383}
+        inSlope: {x: 0.05534657, y: 0.1251216, z: -0.09251008, w: -0.07539263}
+        outSlope: {x: 0.05534657, y: 0.1251216, z: -0.09251008, w: -0.07539263}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    path:
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0.0741717, y: 1.049632E-05, z: 0}
+        outSlope: {x: 0.0741717, y: 1.049632E-05, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1.5
+        value: {x: 0.1112576, y: 0.1016955, z: 0}
+        inSlope: {x: 0, y: 0.0121817, z: 0}
+        outSlope: {x: 0, y: 0.0121817, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1.55
+        value: {x: 0.1109547, y: 0.102, z: 0}
+        inSlope: {x: -0.01199108, y: -0.0001504849, z: 0}
+        outSlope: {x: -0.01199108, y: -0.0001504849, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 3
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: -0.03708585, y: 0, z: 0}
+        outSlope: {x: -0.03708585, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 3.016667
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    path:
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 60
+  m_WrapMode: 2
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_GenerateMotionCurves: 0
+  m_Events: []
