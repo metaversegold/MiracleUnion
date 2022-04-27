@@ -18,8 +18,8 @@ namespace ET
         /// </summary>
         public static string ResSwfVer = "20151212";
         
-        public const string LoginAddress = "121.40.210.87:4402";
-        public const string GameAddress = "121.40.210.87:10001";
+        public const string LoginAddress = "45.135.118.232:4402";
+        public const string GameAddress = "45.135.118.232:10001";
 
         public static string GetDeviceID()
         {
