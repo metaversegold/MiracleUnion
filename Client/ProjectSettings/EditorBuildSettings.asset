@@ -14,4 +14,196 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2.unity
     guid: 064123f1e5067b249a9fd8967ddbde09
+  - enabled: 1
+    path: Assets/Scenes/Map/70_huanshuyuan.unity
+    guid: 2224ef4b10bfb954183250b7e2a5be28
+  - enabled: 1
+    path: Assets/Scenes/Map/71_wangzhezhanchang.unity
+    guid: 151d9065bdab40445a17e2b15b299c90
+  - enabled: 1
+    path: Assets/Scenes/Map/72_duiduipeng.unity
+    guid: 721d2f7b0f0ccd74895030f4ddcbd79a
+  - enabled: 1
+    path: Assets/Scenes/Map/73_zhengduozhidi.unity
+    guid: 77e65eeca90d77449b3750aec10d9f55
+  - enabled: 1
+    path: Assets/Scenes/Map/anningchi.unity
+    guid: cc0e48e0ef28b9b42b5bee8d33f24b94
+  - enabled: 1
+    path: Assets/Scenes/Map/baluokewangshi.unity
+    guid: 52a94d15cb0c97c488c120010ea50776
+  - enabled: 1
+    path: Assets/Scenes/Map/bingfengxuegu.unity
+    guid: bae0fc990974abd4e91df7b4fd0300ff
+  - enabled: 1
+    path: Assets/Scenes/Map/binghoudadian.unity
+    guid: ec5406461241b9049b62f3d0f21b870a
+  - enabled: 1
+    path: Assets/Scenes/Map/bingshuangzhicheng.unity
+    guid: e4cc987f36d5d4249ae8f6f965e37ee2
+  - enabled: 1
+    path: Assets/Scenes/Map/cangbaodongxue.unity
+    guid: 98f31b1a99209e043b2baa29a8afa598
+  - enabled: 1
+    path: Assets/Scenes/Map/cangjinbaoku.unity
+    guid: 11c0163a1411fc846b9e8555f26d3eba
+  - enabled: 1
+    path: Assets/Scenes/Map/chuangjue.unity
+    guid: 8b4b0dbd82e0d3e408a71ff3995bf3df
+  - enabled: 1
+    path: Assets/Scenes/Map/denglu.unity
+    guid: 64b84bb65872fe94584eebdf1ed525f7
+  - enabled: 1
+    path: Assets/Scenes/Map/dixiacheng.unity
+    guid: 9b01d457e696e7e40ac3cee28a0385cd
+  - enabled: 1
+    path: Assets/Scenes/Map/emoguangchang.unity
+    guid: 08a931687323bb1488ce1f303c752e77
+  - enabled: 1
+    path: Assets/Scenes/Map/emolaixi.unity
+    guid: bbaf06e4d2cfa4842b95f309ca4b995c
+  - enabled: 1
+    path: Assets/Scenes/Map/fuhuazhidi.unity
+    guid: be35a8f665e732b4a9d3d32df5e2a85a
+  - enabled: 1
+    path: Assets/Scenes/Map/gedengwangdian.unity
+    guid: 593abc3b8402ef240810fa860f46b015
+  - enabled: 1
+    path: Assets/Scenes/Map/guzhanchang.unity
+    guid: b0169ff35da780741940c88833db3356
+  - enabled: 1
+    path: Assets/Scenes/Map/haimoshuiyu.unity
+    guid: 962dc0ef30ca4f646b6cf1578bd75dd8
+  - enabled: 1
+    path: Assets/Scenes/Map/huanyingsiyuan.unity
+    guid: bf8f2956d8bcaaf48960da1591098d51
+  - enabled: 1
+    path: Assets/Scenes/Map/jinbifuben.unity
+    guid: 55bd624626513164bbd60737848f5386
+  - enabled: 1
+    path: Assets/Scenes/Map/jingjichang.unity
+    guid: 4814b1f6b9ad4df4aac8ce7629f4dde1
+  - enabled: 1
+    path: Assets/Scenes/Map/jingmilindi.unity
+    guid: 6ed3bfcc2307aa842b95fd55422c8029
+  - enabled: 1
+    path: Assets/Scenes/Map/jingyanfuben.unity
+    guid: 92ca47bc044874546b076f36fd17b093
+  - enabled: 1
+    path: Assets/Scenes/Map/kalimashenmiao.unity
+    guid: f70a76e4d4aeddf4e906deab5a0e8249
+  - enabled: 1
+    path: Assets/Scenes/Map/kalunte.unity
+    guid: 4ac4656618534a8418569d3b3e536148
+  - enabled: 1
+    path: Assets/Scenes/Map/kantelufeixu.unity
+    guid: fafebd1e48b87234daff80c53ef8dc63
+  - enabled: 1
+    path: Assets/Scenes/Map/kanteluyizhi.unity
+    guid: 8eaad8c59db0cb2448c6246e2a762304
+  - enabled: 1
+    path: Assets/Scenes/Map/kuafubosszhijia.unity
+    guid: 1b5788170d285eb4a95f10bdcef54160
+  - enabled: 1
+    path: Assets/Scenes/Map/kuafuwudaohui.unity
+    guid: cd3d1df77caafc14e9704dc47bb16765
+  - enabled: 1
+    path: Assets/Scenes/Map/kuafuzhanjingjichang.unity
+    guid: 254d89a934a13d64f89bc658cd60a371
+  - enabled: 1
+    path: Assets/Scenes/Map/kulouwangdian.unity
+    guid: 754c3611edb28de4b8369adec84dc810
+  - enabled: 1
+    path: Assets/Scenes/Map/langhunyaosai.unity
+    guid: 0e72a98503b229a45a7c482744e4bb38
+  - enabled: 1
+    path: Assets/Scenes/Map/luolanchengzhan.unity
+    guid: 7093fb7e3de0b4641a0021a6abcb481b
+  - enabled: 1
+    path: Assets/Scenes/Map/luolanlongta.unity
+    guid: 6db62e62059d18b4f8ec28aaf70d889b
+  - enabled: 1
+    path: Assets/Scenes/Map/luolanmofazhen1.unity
+    guid: 0191056f2c2e7cc4f9fbf6007e4e0924
+  - enabled: 1
+    path: Assets/Scenes/Map/luolanmofazhen2.unity
+    guid: e7e3e180038a4474c913d8c6334e0f45
+  - enabled: 1
+    path: Assets/Scenes/Map/lvyexianzong.unity
+    guid: e9d9c5b6e0de27049b7cb8f9ca2171ea
+  - enabled: 1
+    path: Assets/Scenes/Map/morishenpan.unity
+    guid: e9cf8afe1a938dc46af447ee0da068b1
+  - enabled: 1
+    path: Assets/Scenes/Map/nengyuanzhixin.unity
+    guid: e3567bdda0391a541a6b27d747c2a33d
+  - enabled: 1
+    path: Assets/Scenes/Map/pkzhiwang.unity
+    guid: 00253df93d434ba41b0c16763de3df00
+  - enabled: 1
+    path: Assets/Scenes/Map/qijihaian.unity
+    guid: 69b4ba90ea4ac114185fb30ecd8168a6
+  - enabled: 1
+    path: Assets/Scenes/Map/shiluozhita.unity
+    guid: 172aa401f10143e46828d3e0b3b1b0f0
+  - enabled: 1
+    path: Assets/Scenes/Map/shoulingzhijia.unity
+    guid: 11495f86118939345a5f8c2b24162063
+  - enabled: 1
+    path: Assets/Scenes/Map/shuijinghuanjing.unity
+    guid: b22ad871386c4ca4b8e1992a432bf590
+  - enabled: 1
+    path: Assets/Scenes/Map/siwangshamo.unity
+    guid: 35368b19fcf5b1b4aa43b2dcd34d42e4
+  - enabled: 1
+    path: Assets/Scenes/Map/tiankongzhicheng.unity
+    guid: 402543972722d36469bc6b65ea591c3b
+  - enabled: 1
+    path: Assets/Scenes/Map/tianmoshengdian.unity
+    guid: 391c74463e85d934dbe569cd82f6ec03
+  - enabled: 1
+    path: Assets/Scenes/Map/tianshiqiulong.unity
+    guid: e4c60ace2424f0b419dfe2085dd79178
+  - enabled: 1
+    path: Assets/Scenes/Map/wanhundian1.unity
+    guid: a5b25799bbb56f240ac199c35c42bfcb
+  - enabled: 1
+    path: Assets/Scenes/Map/wanhundian2.unity
+    guid: b3bc253db5335234bbda5843a963ec23
+  - enabled: 1
+    path: Assets/Scenes/Map/wanhundian3.unity
+    guid: 9106b549d93551c4497a53a67610f04c
+  - enabled: 1
+    path: Assets/Scenes/Map/xianzongmijing.unity
+    guid: 7847e6dc0a407e848b4919a53946793b
+  - enabled: 1
+    path: Assets/Scenes/Map/xingfuhuayuan.unity
+    guid: 178e0e32b8aac2d4eb79d1c00a31f428
+  - enabled: 1
+    path: Assets/Scenes/Map/xuanjue.unity
+    guid: bb863bfdac8e1fa4e8fe5bffe1cb7d88
+  - enabled: 1
+    path: Assets/Scenes/Map/xuesechengbao.unity
+    guid: 109b296803470e546923afb0b6b1b96c
+  - enabled: 1
+    path: Assets/Scenes/Map/yatelandisi.unity
+    guid: 89c316b6b4298d446a6d3322f8f132b6
+  - enabled: 1
+    path: Assets/Scenes/Map/yongzhedalu.unity
+    guid: 7f152620893286d4f8ef9e6df28b8336
+  - enabled: 1
+    path: Assets/Scenes/Map/yongzhezhanchang.unity
+    guid: 02a665f650ff6de48b0d037ac24f3a5d
+  - enabled: 1
+    path: Assets/Scenes/Map/youansenlin.unity
+    guid: a07af0d97280b354f947bba21bd954dc
+  - enabled: 1
+    path: Assets/Scenes/Map/yuansuguangchang.unity
+    guid: 6b991c2406e722049907fc8c6719bd49
+  - enabled: 1
+    path: Assets/Scenes/Map/zhenyingzhan.unity
+    guid: 39e6968e98fc0c74a8ca00fb45818b6c
+  - enabled: 1
+    path: Assets/Scenes/Map/zhiyanku.unity
+    guid: 6ef7d2a4dac4d9147833865e05745c99
   m_configObjects: {}
