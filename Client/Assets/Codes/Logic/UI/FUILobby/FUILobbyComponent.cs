@@ -49,10 +49,11 @@ namespace ET
 			if (selectedID > 0)
 			{
 				var zoneScene = this.ZoneScene();
-				PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
-				player.RoleID = selectedID;
-				EnterMapHelper.EnterMapAsync(this.ZoneScene()).Coroutine();
-				this.ZoneScene().GetComponent<FUIComponent>().Remove(FUILobby.UIResName);
+				
+				string strcmd = StringUtil.substitute("{0}:{1}:{2}", zoneScene.GetComponent<PlayerComponent>().UserID, selectedID, ConstValue.GetDeviceID());
+				zoneScene.GetComponent<SessionComponent>().Session.SendString(TCPGameServerCmds.CMD_INIT_GAME, strcmd);
+				
+				zoneScene.GetComponent<FUIComponent>().Remove(FUILobby.UIResName);
 			}
 		}
 

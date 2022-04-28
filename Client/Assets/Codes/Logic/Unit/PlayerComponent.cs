@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Server.Data;
 
 namespace ET
 {
@@ -10,8 +11,21 @@ namespace ET
         public string UserToken;
         public bool IsAdult;
         public int GameServerID;
-        public int RoleID;
+
+        public int RoleID
+        {
+            get
+            {
+                if (NetDataRoleData == null)
+                {
+                    return -1;
+                }
+
+                return NetDataRoleData.RoleID;
+            }
+        }
         public int RoleRandToken;
+        public RoleData NetDataRoleData;
         public Dictionary<int, string[]> Roles = new Dictionary<int, string[]>();
 
         public void InitServerInfo(string[] fields)
@@ -19,7 +33,6 @@ namespace ET
             UserID = Convert.ToInt64(fields[0]);
             UserName = fields[1];
             UserToken = fields[2];
-            RoleID = -1;
             IsAdult = Convert.ToInt32(fields[3]) == 1;
         }
 
@@ -36,6 +49,13 @@ namespace ET
                     Roles[id] = info;
                 }
             }
+        }
+
+        public void StartPlayGame()
+        {
+            var zoneScene = this.ZoneScene();
+            string strcmd = StringUtil.substitute("{0}", RoleID);
+            zoneScene.GetComponent<SessionComponent>().Session.SendString(TCPGameServerCmds.CMD_PLAY_GAME, strcmd);
         }
     }
 }

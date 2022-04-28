@@ -8,9 +8,12 @@ namespace ET
     {
         protected override async ETTask Run(Session session, byte[] message)
         {
+            var zoneScene = session.DomainScene();
             Log.Debug($"收到消息 CMD_INIT_GAME : " + BitConverter.ToString(message));
             RoleData roleData =  DataHelper.BytesToObject<RoleData>(message, 0, message.Length);
             Log.Debug($"收到消息 RoleData : " + roleData.RoleName);
+            PlayerComponent player = zoneScene.GetComponent<PlayerComponent>();
+            player.NetDataRoleData = roleData;
             
             //CMD_SPR_GETATTRIB2 EquipPropsData
             //CMD_SPR_BUFFERDATA BufferData
@@ -21,7 +24,12 @@ namespace ET
             //CMD_SPR_DAILYACTIVEDATA 获取每日活跃信息
             //CMD_UPDATEALLTHINGINDEXS
             
-            session.DomainScene().GetComponent<ObjectWait>().Notify(new WaitType.Wait_CreatePlayerRoleUnit() {Data = roleData});
+            //todo CMD_SYNC_TIME
+            string strcmd = StringUtil.substitute("{0}:{1}", zoneScene.GetComponent<PlayerComponent>().RoleID, TimeHelper.ClientNow());
+            zoneScene.GetComponent<SessionComponent>().Session.SendString(TCPGameServerCmds.CMD_SYNC_TIME, strcmd);
+            
+            //session.DomainScene().GetComponent<ObjectWait>().Notify(new WaitType.Wait_CreatePlayerRoleUnit() {Data = roleData});
+            
             await ETTask.CompletedTask;
         }
     }

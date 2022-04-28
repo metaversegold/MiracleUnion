@@ -4,13 +4,8 @@
 	/// 当前协议的版本号
 	/// </summary>
 	public enum TCPCmdProtocolVer { VerSign = 20140624 };
-    
-    /// <summary>
-    /// 用户命令
-    /// </summary>
-    public enum TCPLoginServerCmds { CMD_LOGIN_ON1 = 1, CMD_LOGIN_ON2 = 20 };
 
-    /// <summary>
+	/// <summary>
     /// 用户命令
     /// </summary>
     public enum TCPGameServerCmds
