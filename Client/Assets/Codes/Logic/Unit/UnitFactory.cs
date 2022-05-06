@@ -11,7 +11,12 @@ namespace ET
 		    Unit unit = unitComponent.AddChildWithId<Unit, int>(unitInfo.RoleID, unitInfo.RoleID);
 		    unitComponent.Add(unit);
 	        
-		    unit.Position = new Vector3(unitInfo.PosX, 0, unitInfo.PosY);
+		    RaycastHit hit;
+		    var pos = new Vector3(unitInfo.PosX/100f, 200, unitInfo.PosY/100f);
+		    Physics.Raycast(pos, Vector3.down, out hit);
+		    Log.Debug($"Create unit pos {pos}, RaycastHit {hit.point} ");
+		    unit.Position = hit.point;
+		    
 		    unit.Forward = Vector3.zero;
 	        
 		    NumericComponent numericComponent = unit.AddComponent<NumericComponent>();

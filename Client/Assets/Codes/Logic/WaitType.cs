@@ -20,8 +20,6 @@ namespace ET
                 get;
                 set;
             }
-
-            public M2C_CreateMyUnit Message;
         }
         
         public struct Wait_CreatePlayerRoleUnit: IWaitType

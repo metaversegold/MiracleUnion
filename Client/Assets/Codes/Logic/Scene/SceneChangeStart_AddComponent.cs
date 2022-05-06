@@ -16,6 +16,11 @@ namespace ET
                 sceneChangeComponent = Game.Scene.AddComponent<SceneChangeComponent>();
                 {
                     await sceneChangeComponent.ChangeSceneAsync(currentScene.Name);
+                    
+                    Log.Debug($"SceneChange {currentScene.Name} Load Finish");
+                    
+                    
+                    args.ZoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_CreateMyUnit());
                 }
             }
             finally

@@ -19,8 +19,8 @@ namespace ET
             Game.EventSystem.Publish(new EventType.SceneChangeStart() {ZoneScene = zoneScene});
             
             // 等待CreateMyUnit的消息
+            await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_CreateMyUnit>();
             Unit unit = UnitFactory.Create(currentScene, roleData);
-            unit.Position = new Vector3(roleData.PosX/100f, 0, roleData.PosY/100f);
             unitComponent.Add(unit);
             
             zoneScene.RemoveComponent<AIComponent>();
